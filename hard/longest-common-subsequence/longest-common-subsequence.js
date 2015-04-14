@@ -1,3 +1,5 @@
+//algorithm from Wikipedia
+
 var fs  = require("fs");
 
 function backtrack(C, X, Y, i, j) {
