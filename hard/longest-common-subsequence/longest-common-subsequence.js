@@ -1,4 +1,5 @@
 //algorithm from Wikipedia
+var debug = false;
 
 var fs  = require("fs");
 
@@ -24,6 +25,8 @@ fs.readFileSync(process.argv[2]).toString().split('\n').forEach(function (line) 
         var start = 0;
         var m_end = X.length - 1;
         var n_end = Y.length - 1;
+        var m = X.length - 1;
+        var n = Y.length - 1;
         
         while (start <= m_end && start <= n_end && X[start] === Y[start]){
             start++;
@@ -36,10 +39,20 @@ fs.readFileSync(process.argv[2]).toString().split('\n').forEach(function (line) 
         
         var prefix = X.substr(0, start);
         var suffix = X.substr(m_end + 1);
+
+        X = " " + X.substr(start, m_end - start + 1);
+        Y = " " + Y.substr(start, n_end - start + 1);
         
-        X = " " + X.substr(start, m_end + 1);
-        Y = " " + Y.substr(start, n_end + 1);
-        
+		if(debug) {
+			console.log("prefix: " + prefix);
+			console.log("suffix: " + suffix);
+			console.log("start:  " + start);
+			console.log("m_end:  " + m_end);
+			console.log("n_end:  " + n_end);
+			console.log("X:      " + X);
+			console.log("Y:      " + Y);
+		}
+
         var m = X.length - 1;
         var n = Y.length - 1;
         
